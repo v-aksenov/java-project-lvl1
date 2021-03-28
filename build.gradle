@@ -6,7 +6,20 @@
  */
 plugins {
     id 'com.github.ben-manes.versions' version '0.38.0'
+    id 'application'
 }
 
 group = 'hexlet.code'
 version = '1.0-SNAPSHOT'
+
+application {
+    mainClass = 'hexlet.code.App'
+}
+
+compileJava {
+    options.release = 15
+}
+
+repositories {
+    mavenCentral()
+}
