@@ -9,5 +9,7 @@
 
 ### Example Even game:
 https://asciinema.org/a/kfufgXhCcZkaF8DaD2ansjt30
-### Example Calculator:
+### Example Calculator game:
 https://asciinema.org/a/NgypRm2hLA5esbAQdksGhD4Bf
+### Example GCD game:
+https://asciinema.org/a/AaesadDEh0AyTpLRNhOzWOg8l
