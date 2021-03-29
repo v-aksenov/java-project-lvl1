@@ -6,3 +6,6 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 ### Pipeline with checks status
 ![Linter](https://github.com/v-aksenov/java-project-lvl1/actions/workflows/java-ci.yml/badge.svg)
+
+### Example:
+https://asciinema.org/a/kfufgXhCcZkaF8DaD2ansjt30
