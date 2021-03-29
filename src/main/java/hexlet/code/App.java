@@ -9,7 +9,7 @@ public class App {
 
     public static void main(final String[] args) {
         String game = chooseGame();
-        if(GREET_GAME.equals(game)) {
+        if (GREET_GAME.equals(game)) {
             name = greetings();
             new EvenGame().startGame(name);
         }

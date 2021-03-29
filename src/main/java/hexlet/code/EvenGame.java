@@ -12,7 +12,7 @@ public class EvenGame {
     private boolean isEven;
     private String input;
 
-    public void startGame(String name) {
+    public final void startGame(final String name) {
         boolean finished = gameLoop();
         while (!finished) {
             System.out.printf(INCORRECT, input, isEven ? YES : NO, name);
@@ -29,10 +29,11 @@ public class EvenGame {
     }
 
     private void initState() {
-        numberToUser = random.nextInt(20) + 1;
+        numberToUser = random.nextInt(MAX_NUMBER) + 1;
         isEven = numberToUser % 2 == 0;
     }
 
+    private static final int MAX_NUMBER = 20;
     public static final String YES = "yes";
     public static final String NO = "no";
     public static final String START_MESSAGE = """
@@ -40,6 +41,7 @@ public class EvenGame {
             Question: %s
             Your answer: """;
     public static final String CORRECT = "Correct!";
-    public static final String INCORRECT = "'%s' is wrong answer ;(. Correct answer was '%s'.\n" +
-            "Let's try again, %s!";
+    public static final String INCORRECT = "'%s' is wrong answer ;(. "
+            + "Correct answer was '%s'.\n"
+            + "Let's try again, %s!";
 }
