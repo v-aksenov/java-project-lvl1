@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.game;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -11,7 +11,9 @@ public interface Game {
 
     void startGame(String name);
 
-    void initState();
+    void initOptions();
+
+    int MAX_NUMBER = 10;
 
     String CORRECT = "Correct!";
     String INCORRECT = "'%s' is wrong answer ;(. "

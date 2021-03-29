@@ -1,47 +1,28 @@
-package hexlet.code;
+package hexlet.code.game;
 
 import java.util.List;
 
-public class CalculatorGame implements Game {
+public class CalculatorGame extends BasicGame {
 
     private Integer a = 0;
     private Integer b = 0;
     private Integer action = 0;
-    private Integer result = 0;
-
-    private String input = "";
 
     @Override
-    public final boolean gameLoop() {
-        initState();
-        System.out.printf((QUESTION) + "%n", a, ACTIONS.get(action), b);
-        input = SCANNER.nextLine();
-        try {
-            return result.equals(Integer.valueOf(input));
-        } catch (NumberFormatException e) {
-            return false;
-        }
+    protected final String getMessage() {
+        return String.format((QUESTION) + "%n", a, ACTIONS.get(action), b);
     }
 
     @Override
-    public final void startGame(final String name) {
-        boolean success;
-        for (int i = 0; i < GAME_COUNT; i++) {
-            success = gameLoop();
-            if (success) {
-                System.out.println(CORRECT);
-            } else {
-                System.out.printf(INCORRECT, input, result, name);
-            }
-        }
-    }
-
-    @Override
-    public final void initState() {
+    public final void initOptions() {
         a = RANDOM.nextInt(MAX_NUMBER);
         b = RANDOM.nextInt(MAX_NUMBER);
         action = RANDOM.nextInt(ACTIONS.size());
-        result = doAction();
+    }
+
+    @Override
+    public final String initCorrectAnswer() {
+        return doAction().toString();
     }
 
     private Integer doAction() {
@@ -59,7 +40,6 @@ public class CalculatorGame implements Game {
         }
     }
 
-    public static final int MAX_NUMBER = 20;
     public static final String PLUS = "+";
     public static final String MINUS = "-";
     public static final String MULTI = "*";
