@@ -10,6 +10,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
       - name: Set up openJDK
         uses: actions/setup-java@v1
         with:
