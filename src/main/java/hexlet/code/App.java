@@ -12,6 +12,7 @@ public class App {
         switch (game) {
             case GREET_CODE -> greetingAction();
             case EVEN_CODE -> evenGameAction();
+            case CALC_CODE -> calcGameAction();
             default -> System.out.println("unknown code");
         }
     }
@@ -23,6 +24,11 @@ public class App {
     private static void evenGameAction() {
         greetingAction();
         new EvenGame().startGame(name);
+    }
+
+    private static void calcGameAction() {
+        greetingAction();
+        new CalculatorGame().startGame(name);
     }
 
     private static String chooseGame() {
@@ -37,12 +43,14 @@ public class App {
 
     public static final String GREET_CODE = "1";
     public static final String EVEN_CODE = "2";
+    public static final String CALC_CODE = "3";
     public static final String EXIT_CODE = "0";
 
     public static final String CHOOSE_GAME =
             "Please enter the game number and press Enter.\n"
                     + GREET_CODE + " - Greet\n"
                     + EVEN_CODE + " - Even\n"
+                    + CALC_CODE + " - Calc\n"
                     + EXIT_CODE + " - Exit\n"
                     + "Your choice: ";
 }

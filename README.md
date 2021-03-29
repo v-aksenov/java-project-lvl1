@@ -7,5 +7,7 @@
 ### Pipeline with checks status
 ![Linter](https://github.com/v-aksenov/java-project-lvl1/actions/workflows/java-ci.yml/badge.svg)
 
-### Example:
+### Example Even game:
 https://asciinema.org/a/kfufgXhCcZkaF8DaD2ansjt30
+### Example Calculator:
+https://asciinema.org/a/NgypRm2hLA5esbAQdksGhD4Bf

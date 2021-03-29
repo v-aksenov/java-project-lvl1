@@ -1,12 +1,6 @@
 package hexlet.code;
 
-import java.util.Random;
-import java.util.Scanner;
-
-public class EvenGame {
-
-    private final Random random = new Random();
-    private final Scanner scanner = new Scanner(System.in);
+public class EvenGame implements Game {
 
     private int numberToUser;
     private boolean isEven;
@@ -21,14 +15,14 @@ public class EvenGame {
         System.out.println(CORRECT);
     }
 
-    private boolean gameLoop() {
+    public boolean gameLoop() {
         initState();
         System.out.printf(START_MESSAGE, numberToUser);
         input = scanner.nextLine();
         return YES.equals(input) && isEven || NO.equals(input) && !isEven;
     }
 
-    private void initState() {
+    public void initState() {
         numberToUser = random.nextInt(MAX_NUMBER) + 1;
         isEven = numberToUser % 2 == 0;
     }
@@ -40,8 +34,5 @@ public class EvenGame {
             Answer 'yes' if number even otherwise answer 'no'.
             Question: %s
             Your answer: """;
-    public static final String CORRECT = "Correct!";
-    public static final String INCORRECT = "'%s' is wrong answer ;(. "
-            + "Correct answer was '%s'.\n"
-            + "Let's try again, %s!";
+
 }
