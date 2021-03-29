@@ -8,8 +8,8 @@
 ![Linter](https://github.com/v-aksenov/java-project-lvl1/actions/workflows/java-ci.yml/badge.svg)
 
 ### Example Even game:
-https://asciinema.org/a/kfufgXhCcZkaF8DaD2ansjt30
-### Example Calculator game:
-https://asciinema.org/a/NgypRm2hLA5esbAQdksGhD4Bf
+[![Example Even game](https://asciinema.org/a/kfufgXhCcZkaF8DaD2ansjt30.svg)](https://asciinema.org/a/kfufgXhCcZkaF8DaD2ansjt30)
+### Example Calculator game
+[![Example Calculator game](https://asciinema.org/a/NgypRm2hLA5esbAQdksGhD4Bf.svg)](https://asciinema.org/a/NgypRm2hLA5esbAQdksGhD4Bf)
 ### Example GCD game:
-https://asciinema.org/a/AaesadDEh0AyTpLRNhOzWOg8l
+[![Example GCD game](https://asciinema.org/a/AaesadDEh0AyTpLRNhOzWOg8l.svg)](https://asciinema.org/a/AaesadDEh0AyTpLRNhOzWOg8l)
