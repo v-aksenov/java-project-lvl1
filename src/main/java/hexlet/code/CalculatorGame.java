@@ -25,12 +25,15 @@ public class CalculatorGame implements Game {
 
     @Override
     public void startGame(String name) {
-        boolean finished = gameLoop();
-        while (!finished) {
-            System.out.printf(INCORRECT, input, result, name);
-            finished = gameLoop();
+        boolean success;
+        for (int i = 0; i < GAME_COUNT; i++) {
+            success = gameLoop();
+            if(success) {
+                System.out.println(CORRECT);
+            } else {
+                System.out.printf(INCORRECT, input, result, name);
+            }
         }
-        System.out.println(CORRECT);
     }
 
     @Override

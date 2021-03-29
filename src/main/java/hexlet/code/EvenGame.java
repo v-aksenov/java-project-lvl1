@@ -7,12 +7,15 @@ public class EvenGame implements Game {
     private String input;
 
     public final void startGame(final String name) {
-        boolean finished = gameLoop();
-        while (!finished) {
-            System.out.printf(INCORRECT, input, isEven ? YES : NO, name);
-            finished = gameLoop();
+        boolean success;
+        for (int i = 0; i < GAME_COUNT; i++) {
+            success = gameLoop();
+            if(success) {
+                System.out.println(CORRECT);
+            } else {
+                System.out.printf(INCORRECT, input, isEven ? YES : NO, name);
+            }
         }
-        System.out.println(CORRECT);
     }
 
     public boolean gameLoop() {
