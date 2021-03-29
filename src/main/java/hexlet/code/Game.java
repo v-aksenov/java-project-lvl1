@@ -4,12 +4,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public interface Game {
-    Random random = new Random();
-    Scanner scanner = new Scanner(System.in);
+    Random RANDOM = new Random();
+    Scanner SCANNER = new Scanner(System.in);
 
     boolean gameLoop();
 
-    void startGame(final String name);
+    void startGame(String name);
 
     void initState();
 

@@ -12,10 +12,10 @@ public class CalculatorGame implements Game {
     private String input = "";
 
     @Override
-    public boolean gameLoop() {
+    public final boolean gameLoop() {
         initState();
         System.out.printf((QUESTION) + "%n", a, ACTIONS.get(action), b);
-        input = scanner.nextLine();
+        input = SCANNER.nextLine();
         try {
             return result.equals(Integer.valueOf(input));
         } catch (NumberFormatException e) {
@@ -24,11 +24,11 @@ public class CalculatorGame implements Game {
     }
 
     @Override
-    public void startGame(String name) {
+    public final void startGame(final String name) {
         boolean success;
         for (int i = 0; i < GAME_COUNT; i++) {
             success = gameLoop();
-            if(success) {
+            if (success) {
                 System.out.println(CORRECT);
             } else {
                 System.out.printf(INCORRECT, input, result, name);
@@ -37,10 +37,10 @@ public class CalculatorGame implements Game {
     }
 
     @Override
-    public void initState() {
-        a = random.nextInt(MAX_NUMBER);
-        b = random.nextInt(MAX_NUMBER);
-        action = random.nextInt(ACTIONS.size());
+    public final void initState() {
+        a = RANDOM.nextInt(MAX_NUMBER);
+        b = RANDOM.nextInt(MAX_NUMBER);
+        action = RANDOM.nextInt(ACTIONS.size());
         result = doAction();
     }
 

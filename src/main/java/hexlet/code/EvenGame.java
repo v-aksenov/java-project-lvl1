@@ -10,7 +10,7 @@ public class EvenGame implements Game {
         boolean success;
         for (int i = 0; i < GAME_COUNT; i++) {
             success = gameLoop();
-            if(success) {
+            if (success) {
                 System.out.println(CORRECT);
             } else {
                 System.out.printf(INCORRECT, input, isEven ? YES : NO, name);
@@ -18,15 +18,15 @@ public class EvenGame implements Game {
         }
     }
 
-    public boolean gameLoop() {
+    public final boolean gameLoop() {
         initState();
         System.out.printf(START_MESSAGE, numberToUser);
-        input = scanner.nextLine();
+        input = SCANNER.nextLine();
         return YES.equals(input) && isEven || NO.equals(input) && !isEven;
     }
 
-    public void initState() {
-        numberToUser = random.nextInt(MAX_NUMBER) + 1;
+    public final void initState() {
+        numberToUser = RANDOM.nextInt(MAX_NUMBER) + 1;
         isEven = numberToUser % 2 == 0;
     }
 
