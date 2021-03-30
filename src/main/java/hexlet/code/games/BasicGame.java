@@ -19,9 +19,10 @@ public abstract class BasicGame implements Game {
 
     @Override
     public final void startGame(final String name) {
-        boolean success;
+        boolean success = true;
+        int i = 0;
         System.out.println(getMessage());
-        for (int i = 0; i < GAME_COUNT; i++) {
+        while (i++ < GAME_COUNT && success) {
             success = gameLoop();
             if (success) {
                 System.out.println(CORRECT);
