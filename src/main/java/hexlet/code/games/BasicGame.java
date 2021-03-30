@@ -11,7 +11,6 @@ public abstract class BasicGame implements Game {
     @Override
     public final boolean gameLoop() {
         initState();
-        System.out.println(getMessage());
         System.out.println(QUESTION + getOption());
         System.out.print(YOUR_ANSWER);
         userInput = SCANNER.nextLine();
@@ -21,6 +20,7 @@ public abstract class BasicGame implements Game {
     @Override
     public final void startGame(final String name) {
         boolean success;
+        System.out.println(getMessage());
         for (int i = 0; i < GAME_COUNT; i++) {
             success = gameLoop();
             if (success) {

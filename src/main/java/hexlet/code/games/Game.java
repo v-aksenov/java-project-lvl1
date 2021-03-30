@@ -16,9 +16,10 @@ public interface Game {
     int MAX_NUMBER = 10;
 
     String CORRECT = "Correct!";
-    String INCORRECT = "'%s' is wrong answer ;(. "
-            + "Correct answer was '%s'.\n"
-            + "Let's try again, %s!";
+    String INCORRECT = """
+            '%s' is wrong answer ;(. Correct answer was '%s'.
+            Let's try again, %s!
+            """;
     String CONGRATULATIONS = "Congratulations, %s!";
     String YOUR_ANSWER = "Your answer: ";
     String QUESTION = "Question: ";
