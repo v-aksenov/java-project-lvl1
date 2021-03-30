@@ -15,7 +15,7 @@ public class ProgressionGame extends BasicGame {
     @Override
     public final void initState() {
         progression.clear();
-        int amount = RANDOM.nextInt(MAX_NUMBER) + 5;
+        int amount = RANDOM.nextInt(MAX_NUMBER) + MIN_PROGRESSION_SIZE;
         int currentElement = RANDOM.nextInt(MAX_NUMBER);
         int step = RANDOM.nextInt(MAX_NUMBER) + 1;
         for (int i = 0; i < amount; i++) {
@@ -33,6 +33,7 @@ public class ProgressionGame extends BasicGame {
         return hiddenElement;
     }
 
+    private static final int MIN_PROGRESSION_SIZE = 5;
     private static final String HIDDEN = "..";
     private static final String MESSAGE =
             """
