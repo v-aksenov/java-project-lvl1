@@ -20,6 +20,8 @@ public interface Game {
             + "Correct answer was '%s'.\n"
             + "Let's try again, %s!";
     String CONGRATULATIONS = "Congratulations, %s!";
+    String YOUR_ANSWER = "Your answer: ";
+    String QUESTION = "Question: ";
 
     int GAME_COUNT = 3;
 }

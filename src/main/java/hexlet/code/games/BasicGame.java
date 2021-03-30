@@ -3,17 +3,19 @@ package hexlet.code.games;
 public abstract class BasicGame implements Game {
 
     private String userInput = "";
-    private String correctAnswer;
 
     protected abstract String getMessage();
+
+    protected abstract String getOption();
 
     @Override
     public final boolean gameLoop() {
         initState();
-        correctAnswer = initCorrectAnswer();
-        System.out.print(getMessage());
+        System.out.println(getMessage());
+        System.out.println(QUESTION + getOption());
+        System.out.print(YOUR_ANSWER);
         userInput = SCANNER.nextLine();
-        return isCorrect();
+        return getCorrectAnswer().equals(userInput);
     }
 
     @Override
@@ -24,17 +26,19 @@ public abstract class BasicGame implements Game {
             if (success) {
                 System.out.println(CORRECT);
             } else {
-                System.out.printf(INCORRECT, userInput, correctAnswer, name);
+                System.out.printf(
+                        INCORRECT,
+                        userInput,
+                        getCorrectAnswer(),
+                        name
+                );
             }
         }
         System.out.printf(CONGRATULATIONS, name);
     }
 
-    protected final boolean isCorrect() {
-        return correctAnswer.equals(userInput);
-    }
-
     @Override
     public abstract void initState();
-    public abstract String initCorrectAnswer();
+
+    public abstract String getCorrectAnswer();
 }

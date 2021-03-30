@@ -16,7 +16,12 @@ public class PrimeGame extends BasicGame {
 
     @Override
     protected final String getMessage() {
-        return MESSAGE.formatted(primeOption);
+        return MESSAGE;
+    }
+
+    @Override
+    protected final String getOption() {
+        return primeOption;
     }
 
     @Override
@@ -26,7 +31,7 @@ public class PrimeGame extends BasicGame {
     }
 
     @Override
-    public final String initCorrectAnswer() {
+    public final String getCorrectAnswer() {
         return primeNumbers.contains(primeOption) ? YES : NO;
     }
 
@@ -54,8 +59,5 @@ public class PrimeGame extends BasicGame {
     public static final String NO = "no";
     private static final Integer BOUND = 200;
     private static final String MESSAGE =
-            "Answer 'yes' if given number is prime. "
-            + "Otherwise answer 'no'.\n"
-            + "Question: %s\n"
-            + "Your answer: ";
+            "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 }

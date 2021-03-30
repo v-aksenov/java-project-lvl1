@@ -5,10 +5,14 @@ public class GCDGame extends BasicGame {
     private Integer option1 = 0;
     private Integer option2 = 0;
 
-
     @Override
     protected final String getMessage() {
-        return String.format(MESSAGE, option1, option2);
+        return MESSAGE;
+    }
+
+    @Override
+    protected final String getOption() {
+        return "%s %s".formatted(option1, option2);
     }
 
     @Override
@@ -19,7 +23,7 @@ public class GCDGame extends BasicGame {
     }
 
     @Override
-    public final String initCorrectAnswer() {
+    public final String getCorrectAnswer() {
         return getMultiplier().toString();
     }
 
@@ -37,8 +41,5 @@ public class GCDGame extends BasicGame {
     }
 
     private static final String MESSAGE =
-            """
-                    Find the greatest common divisor of given numbers.
-                    Question: %s %s
-                    Your answer:\s""";
+            "Find the greatest common divisor of given numbers.";
 }

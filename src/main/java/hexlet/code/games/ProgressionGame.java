@@ -9,7 +9,12 @@ public class ProgressionGame extends BasicGame {
 
     @Override
     protected final String getMessage() {
-        return MESSAGE.formatted(String.join(" ", progression));
+        return MESSAGE;
+    }
+
+    @Override
+    protected final String getOption() {
+        return String.join(" ", progression);
     }
 
     @Override
@@ -25,7 +30,7 @@ public class ProgressionGame extends BasicGame {
     }
 
     @Override
-    public final String initCorrectAnswer() {
+    public final String getCorrectAnswer() {
         int elementToHide = RANDOM.nextInt(progression.size());
         String hiddenElement = progression.get(elementToHide);
         progression.remove(elementToHide);
@@ -36,8 +41,5 @@ public class ProgressionGame extends BasicGame {
     private static final int MIN_PROGRESSION_SIZE = 5;
     private static final String HIDDEN = "..";
     private static final String MESSAGE =
-            """
-                    What number is missing in the progression?
-                    Question: %s
-                    Your answer: """;
+            "What number is missing in the progression?";
 }

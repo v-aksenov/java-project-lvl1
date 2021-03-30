@@ -10,7 +10,12 @@ public class CalculatorGame extends BasicGame {
 
     @Override
     protected final String getMessage() {
-        return String.format((QUESTION) + "%n", a, ACTIONS.get(action), b);
+        return QUESTION;
+    }
+
+    @Override
+    protected final String getOption() {
+        return a + ACTIONS.get(action) + b;
     }
 
     @Override
@@ -21,7 +26,7 @@ public class CalculatorGame extends BasicGame {
     }
 
     @Override
-    public final String initCorrectAnswer() {
+    public final String getCorrectAnswer() {
         return doAction().toString();
     }
 
@@ -46,8 +51,5 @@ public class CalculatorGame extends BasicGame {
     private static final List<String> ACTIONS = List.of(PLUS, MINUS, MULTI);
 
     public static final String QUESTION =
-            """
-                    What is the result of the expression?
-                    Question: %s %s %s
-                    Your answer:\s""";
+            "What is the result of the expression?";
 }
