@@ -3,6 +3,8 @@ package hexlet.code;
 import hexlet.code.game.CalculatorGame;
 import hexlet.code.game.EvenGame;
 import hexlet.code.game.GCDGame;
+import hexlet.code.game.Game;
+import hexlet.code.game.PrimeGame;
 import hexlet.code.game.ProgressionGame;
 
 import java.util.Scanner;
@@ -10,42 +12,22 @@ import java.util.Scanner;
 public class App {
 
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static String name;
 
     public static void main(final String[] args) {
         String game = chooseGame();
         switch (game) {
-            case GREET_CODE -> greetingAction();
-            case EVEN_CODE -> evenGameAction();
-            case CALC_CODE -> calcGameAction();
-            case GCD_CODE -> gcdGameAction();
-            case PROGRESSION_CODE -> progressionGameAction();
+            case GREET_CODE -> greetings();
+            case EVEN_CODE -> startWithGreeting(new EvenGame());
+            case CALC_CODE -> startWithGreeting(new CalculatorGame());
+            case GCD_CODE -> startWithGreeting(new GCDGame());
+            case PROGRESSION_CODE -> startWithGreeting(new ProgressionGame());
+            case PRIME_CODE -> startWithGreeting(new PrimeGame());
             default -> System.out.println("unknown code");
         }
     }
 
-    private static void greetingAction() {
-        name = greetings();
-    }
-
-    private static void evenGameAction() {
-        greetingAction();
-        new EvenGame().startGame(name);
-    }
-
-    private static void calcGameAction() {
-        greetingAction();
-        new CalculatorGame().startGame(name);
-    }
-
-    private static void gcdGameAction() {
-        greetingAction();
-        new GCDGame().startGame(name);
-    }
-
-    private static void progressionGameAction() {
-        greetingAction();
-        new ProgressionGame().startGame(name);
+    private static void startWithGreeting(final Game game) {
+        game.startGame(greetings());
     }
 
     private static String chooseGame() {
@@ -63,6 +45,7 @@ public class App {
     public static final String CALC_CODE = "3";
     public static final String GCD_CODE = "4";
     public static final String PROGRESSION_CODE = "5";
+    public static final String PRIME_CODE = "6";
     public static final String EXIT_CODE = "0";
 
     public static final String CHOOSE_GAME =
@@ -72,6 +55,7 @@ public class App {
                     + CALC_CODE + " - Calc\n"
                     + GCD_CODE + " - GCD\n"
                     + PROGRESSION_CODE + " - Progression\n"
+                    + PRIME_CODE + " - Prime\n"
                     + EXIT_CODE + " - Exit\n"
                     + "Your choice: ";
 }
