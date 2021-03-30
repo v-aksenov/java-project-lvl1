@@ -11,7 +11,7 @@ public abstract class BasicGame implements Game {
     public final boolean gameLoop() {
         initState();
         correctAnswer = initCorrectAnswer();
-        System.out.println(getMessage());
+        System.out.print(getMessage());
         userInput = SCANNER.nextLine();
         return isCorrect();
     }
