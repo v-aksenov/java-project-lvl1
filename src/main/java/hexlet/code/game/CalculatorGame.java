@@ -14,7 +14,7 @@ public class CalculatorGame extends BasicGame {
     }
 
     @Override
-    public final void initOptions() {
+    public final void initState() {
         a = RANDOM.nextInt(MAX_NUMBER);
         b = RANDOM.nextInt(MAX_NUMBER);
         action = RANDOM.nextInt(ACTIONS.size());

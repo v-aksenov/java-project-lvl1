@@ -9,7 +9,7 @@ public class EvenGame extends BasicGame {
         return String.format(START_MESSAGE, numberToUser);
     }
 
-    public final void initOptions() {
+    public final void initState() {
         numberToUser = RANDOM.nextInt(MAX_NUMBER) + 1;
     }
 

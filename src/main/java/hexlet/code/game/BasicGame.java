@@ -9,7 +9,7 @@ public abstract class BasicGame implements Game {
 
     @Override
     public final boolean gameLoop() {
-        initOptions();
+        initState();
         correctAnswer = initCorrectAnswer();
         System.out.println(getMessage());
         userInput = SCANNER.nextLine();
@@ -34,6 +34,6 @@ public abstract class BasicGame implements Game {
     }
 
     @Override
-    public abstract void initOptions();
+    public abstract void initState();
     public abstract String initCorrectAnswer();
 }

@@ -13,3 +13,5 @@
 [![Example Calculator game](https://asciinema.org/a/NgypRm2hLA5esbAQdksGhD4Bf.svg)](https://asciinema.org/a/NgypRm2hLA5esbAQdksGhD4Bf)
 ### Example GCD game:
 [![Example GCD game](https://asciinema.org/a/AaesadDEh0AyTpLRNhOzWOg8l.svg)](https://asciinema.org/a/AaesadDEh0AyTpLRNhOzWOg8l)
+### Example progression game:
+[![Example progression game](https://asciinema.org/a/CUVr8komrCx2Li5rbFIO2gKNv.svg)](https://asciinema.org/a/CUVr8komrCx2Li5rbFIO2gKNv)

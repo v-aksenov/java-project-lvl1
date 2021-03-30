@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.game.CalculatorGame;
 import hexlet.code.game.EvenGame;
 import hexlet.code.game.GCDGame;
+import hexlet.code.game.ProgressionGame;
 
 import java.util.Scanner;
 
@@ -18,6 +19,7 @@ public class App {
             case EVEN_CODE -> evenGameAction();
             case CALC_CODE -> calcGameAction();
             case GCD_CODE -> gcdGameAction();
+            case PROGRESSION_CODE -> progressionGameAction();
             default -> System.out.println("unknown code");
         }
     }
@@ -41,6 +43,11 @@ public class App {
         new GCDGame().startGame(name);
     }
 
+    private static void progressionGameAction() {
+        greetingAction();
+        new ProgressionGame().startGame(name);
+    }
+
     private static String chooseGame() {
         System.out.print(CHOOSE_GAME);
         return SCANNER.nextLine();
@@ -55,6 +62,7 @@ public class App {
     public static final String EVEN_CODE = "2";
     public static final String CALC_CODE = "3";
     public static final String GCD_CODE = "4";
+    public static final String PROGRESSION_CODE = "5";
     public static final String EXIT_CODE = "0";
 
     public static final String CHOOSE_GAME =
@@ -63,6 +71,7 @@ public class App {
                     + EVEN_CODE + " - Even\n"
                     + CALC_CODE + " - Calc\n"
                     + GCD_CODE + " - GCD\n"
+                    + PROGRESSION_CODE + " - Progression\n"
                     + EXIT_CODE + " - Exit\n"
                     + "Your choice: ";
 }

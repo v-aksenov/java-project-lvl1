@@ -12,7 +12,7 @@ public class GCDGame extends BasicGame {
     }
 
     @Override
-    public final void initOptions() {
+    public final void initState() {
         int multiplier = RANDOM.nextInt(MAX_NUMBER);
         option1 = multiplier * RANDOM.nextInt(MAX_NUMBER);
         option2 = multiplier * RANDOM.nextInt(MAX_NUMBER);

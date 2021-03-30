@@ -11,7 +11,7 @@ public interface Game {
 
     void startGame(String name);
 
-    void initOptions();
+    void initState();
 
     int MAX_NUMBER = 10;
 
