@@ -20,7 +20,7 @@ public class EvenGame extends BasicGame {
 
     @Override
     public final String getCorrectAnswer() {
-        return numberToUser % 2 == 0 ? YES : NO;
+        return numberToUser % 2 == 0 ? NO : YES;
     }
 
     public static final String YES = "yes";
