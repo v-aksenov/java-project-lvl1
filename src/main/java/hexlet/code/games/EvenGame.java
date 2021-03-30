@@ -1,4 +1,4 @@
-package hexlet.code.game;
+package hexlet.code.games;
 
 public class EvenGame extends BasicGame {
 

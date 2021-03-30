@@ -1,4 +1,4 @@
-package hexlet.code.game;
+package hexlet.code.games;
 
 public abstract class BasicGame implements Game {
 
