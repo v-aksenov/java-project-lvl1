@@ -16,5 +16,13 @@ run-dist: install
 run:
 	./gradlew run
 
+test:
+	./gradlew test
+
 lint:
 	./gradlew checkstyleMain checkstyleTest
+
+check-updates:
+	./gradlew dependencyUpdates
+
+build-run: build run
