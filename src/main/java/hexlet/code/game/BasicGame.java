@@ -27,6 +27,7 @@ public abstract class BasicGame implements Game {
                 System.out.printf(INCORRECT, userInput, correctAnswer, name);
             }
         }
+        System.out.printf(CONGRATULATIONS, name);
     }
 
     protected final boolean isCorrect() {

@@ -19,6 +19,7 @@ public interface Game {
     String INCORRECT = "'%s' is wrong answer ;(. "
             + "Correct answer was '%s'.\n"
             + "Let's try again, %s!";
+    String CONGRATULATIONS = "Congratulations, %s!";
 
     int GAME_COUNT = 3;
 }
