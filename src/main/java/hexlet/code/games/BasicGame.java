@@ -12,7 +12,7 @@ public abstract class BasicGame implements Game {
     public final boolean gameLoop() {
         initState();
         System.out.println(QUESTION + getOption());
-        System.out.print(YOUR_ANSWER);
+        System.out.println(YOUR_ANSWER);
         userInput = SCANNER.nextLine();
         return getCorrectAnswer().equals(userInput);
     }
