@@ -22,7 +22,7 @@ public class ProgressionGame extends BasicGame {
         progression.clear();
         int amount = RANDOM.nextInt(MAX_NUMBER) + MIN_PROGRESSION_SIZE;
         int currentElement = RANDOM.nextInt(MAX_NUMBER);
-        int step = RANDOM.nextInt(MAX_NUMBER) + 1;
+        int step = getRandomNonZero();
         for (int i = 0; i < amount; i++) {
             progression.add(Integer.toString(currentElement));
             currentElement += step;

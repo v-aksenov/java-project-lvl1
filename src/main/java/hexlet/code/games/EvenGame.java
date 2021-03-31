@@ -15,7 +15,7 @@ public class EvenGame extends BasicGame {
     }
 
     public final void initState() {
-        numberToUser = RANDOM.nextInt(MAX_NUMBER) + 1;
+        numberToUser = getRandomNonZero();
     }
 
     @Override

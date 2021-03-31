@@ -42,4 +42,8 @@ public abstract class BasicGame implements Game {
     public abstract void initState();
 
     public abstract String getCorrectAnswer();
+
+    protected final Integer getRandomNonZero() {
+        return RANDOM.nextInt(MAX_NUMBER) + 1;
+    }
 }
