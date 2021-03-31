@@ -15,7 +15,7 @@ public class CalculatorGame extends BasicGame {
 
     @Override
     protected final String getOption() {
-        return a + ACTIONS.get(action) + b;
+        return "%s %s %s".formatted(a, ACTIONS.get(action), b);
     }
 
     @Override
