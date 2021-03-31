@@ -50,7 +50,7 @@ public class PrimeGame extends BasicGame {
             i++;
         }
         return numbers.stream()
-                .filter(n -> n.equals(0))
+                .filter(n -> !n.equals(0))
                 .map(Object::toString)
                 .collect(Collectors.toList());
     }
