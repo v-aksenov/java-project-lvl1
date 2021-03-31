@@ -14,7 +14,7 @@ public class EvenGame extends BasicGame {
         return numberToUser.toString();
     }
 
-    public final void initState() {
+    public void initState() {
         numberToUser = getRandomNonZero();
     }
 

@@ -49,8 +49,8 @@ public class App {
     public static final String EXIT_CODE = "0";
 
     public static final String CHOOSE_GAME =
-            "Please enter the game number and press Enter.\n"
-                    + GREET_CODE + " - Greet\n"
+            "Please enter the game number and press Enter.\n" +
+            GREET_CODE + " - Greet\n"
                     + EVEN_CODE + " - Even\n"
                     + CALC_CODE + " - Calc\n"
                     + GCD_CODE + " - GCD\n"

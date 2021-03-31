@@ -18,7 +18,7 @@ public abstract class BasicGame implements Game {
     }
 
     @Override
-    public final void startGame(final String name) {
+    public final void startGame(String name) {
         boolean success = true;
         int i = 0;
         System.out.println(getMessage());
