@@ -6,6 +6,7 @@ import java.util.List;
 public class ProgressionGame extends BasicGame {
 
     private final List<String> progression = new ArrayList<>();
+    private String hiddenElement;
 
     @Override
     protected final String getMessage() {
@@ -19,6 +20,11 @@ public class ProgressionGame extends BasicGame {
 
     @Override
     public final void initState() {
+        initProgression();
+        hideElement();
+    }
+
+    private void initProgression() {
         progression.clear();
         int amount = RANDOM.nextInt(MAX_NUMBER) + MIN_PROGRESSION_SIZE;
         int currentElement = getRandomNonZero();
@@ -29,12 +35,15 @@ public class ProgressionGame extends BasicGame {
         }
     }
 
-    @Override
-    public final String getCorrectAnswer() {
+    private void hideElement() {
         int elementToHide = RANDOM.nextInt(progression.size());
-        String hiddenElement = progression.get(elementToHide);
+        hiddenElement = progression.get(elementToHide);
         progression.remove(elementToHide);
         progression.add(elementToHide, HIDDEN);
+    }
+
+    @Override
+    public final String getCorrectAnswer() {
         return hiddenElement;
     }
 

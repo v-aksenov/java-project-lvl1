@@ -35,7 +35,9 @@ public abstract class BasicGame implements Game {
                 );
             }
         }
-        System.out.printf(CONGRATULATIONS, name);
+        if (success) {
+            System.out.printf(CONGRATULATIONS, name);
+        }
     }
 
     @Override
