@@ -38,8 +38,6 @@ public class PrimeGame extends BasicGame {
 
     private List<String> initPrimeNumbers() {
         List<Integer> numbers = new ArrayList<>(allNumbers);
-        numbers.remove(0);
-        numbers.remove(1);
         int i = 2;
         while (i < numbers.size()) {
             if (!numbers.get(i).equals(0)) {
@@ -51,6 +49,8 @@ public class PrimeGame extends BasicGame {
             }
             i++;
         }
+        numbers.remove(0);
+        numbers.remove(0);
         return numbers.stream()
                 .filter(n -> !n.equals(0))
                 .map(Object::toString)
