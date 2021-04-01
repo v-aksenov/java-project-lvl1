@@ -3,7 +3,6 @@ package hexlet.code;
 import hexlet.code.games.CalculatorGame;
 import hexlet.code.games.EvenGame;
 import hexlet.code.games.GCDGame;
-import hexlet.code.games.Game;
 import hexlet.code.games.PrimeGame;
 import hexlet.code.games.ProgressionGame;
 
@@ -17,17 +16,13 @@ public class App {
         String game = chooseGame();
         switch (game) {
             case GREET_CODE -> greetings();
-            case EVEN_CODE -> startWithGreeting(new EvenGame());
-            case CALC_CODE -> startWithGreeting(new CalculatorGame());
-            case GCD_CODE -> startWithGreeting(new GCDGame());
-            case PROGRESSION_CODE -> startWithGreeting(new ProgressionGame());
-            case PRIME_CODE -> startWithGreeting(new PrimeGame());
+            case EVEN_CODE -> EvenGame.startGame(greetings());
+            case CALC_CODE -> CalculatorGame.startGame(greetings());
+            case GCD_CODE -> GCDGame.startGame(greetings());
+            case PROGRESSION_CODE -> ProgressionGame.startGame(greetings());
+            case PRIME_CODE -> PrimeGame.startGame(greetings());
             default -> System.out.println("unknown code");
         }
-    }
-
-    private static void startWithGreeting(final Game game) {
-        game.startGame(greetings());
     }
 
     private static String chooseGame() {

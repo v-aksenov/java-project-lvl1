@@ -1,30 +1,34 @@
 package hexlet.code.games;
 
-public class EvenGame extends BasicGame {
+import static hexlet.code.games.engine.Commons.GAME_COUNT;
+import static hexlet.code.games.engine.Commons.NO;
+import static hexlet.code.games.engine.Commons.YES;
+import static hexlet.code.games.engine.Commons.gameLoop;
+import static hexlet.code.games.engine.Commons.getRandomNonZero;
+import static hexlet.code.games.engine.Commons.printCongratulations;
 
-    private Integer numberToUser;
+public class EvenGame {
 
-    @Override
-    protected final String getMessage() {
-        return START_MESSAGE;
+    public static void startGame(final String name) {
+        System.out.println(START_MESSAGE);
+        boolean success = true;
+        int i = 0;
+        int option;
+        String correctAnswer;
+        while (i++ < GAME_COUNT && success) {
+            option = getRandomNonZero();
+            correctAnswer = getCorrectAnswer(option);
+            success = gameLoop(name, Integer.toString(option), correctAnswer);
+        }
+        if (success) {
+            printCongratulations(name);
+        }
     }
 
-    @Override
-    protected final String getOption() {
-        return numberToUser.toString();
+    public static String getCorrectAnswer(final int option) {
+        return option % 2 == 0 ? YES : NO;
     }
 
-    public final void initState() {
-        numberToUser = getRandomNonZero();
-    }
-
-    @Override
-    public final String getCorrectAnswer() {
-        return numberToUser % 2 == 0 ? YES : NO;
-    }
-
-    public static final String YES = "yes";
-    public static final String NO = "no";
-    public static final String START_MESSAGE =
+    private static final String START_MESSAGE =
             "Answer 'yes' if number even otherwise answer 'no'.";
 }

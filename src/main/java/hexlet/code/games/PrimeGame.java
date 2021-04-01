@@ -2,48 +2,52 @@ package hexlet.code.games;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class PrimeGame extends BasicGame {
+import static hexlet.code.games.engine.Commons.GAME_COUNT;
+import static hexlet.code.games.engine.Commons.NO;
+import static hexlet.code.games.engine.Commons.RANDOM;
+import static hexlet.code.games.engine.Commons.YES;
+import static hexlet.code.games.engine.Commons.gameLoop;
+import static hexlet.code.games.engine.Commons.printCongratulations;
 
-    private final List<Integer> allNumbers = IntStream
-            .range(0, BOUND)
-            .boxed()
-            .collect(Collectors.toList());
-    private final List<String> primeNumbers = initPrimeNumbers();
-    private String primeOption;
+public class PrimeGame {
 
-    @Override
-    protected final String getMessage() {
-        return MESSAGE;
+    public static void startGame(final String name) {
+        System.out.println(START_MESSAGE);
+        boolean success = true;
+        int i = 0;
+        List<String> allNumbers = initAllNumbers();
+        List<String> primeNumbers = initPrimeNumbers(allNumbers);
+        String optionElement;
+        String correctAnswer;
+        while (i++ < GAME_COUNT && success) {
+            optionElement = allNumbers.get(RANDOM.nextInt(allNumbers.size()));
+            correctAnswer = primeNumbers.contains(optionElement) ? YES : NO;
+            success = gameLoop(name, optionElement, correctAnswer);
+        }
+        if (success) {
+            printCongratulations(name);
+        }
     }
 
-    @Override
-    protected final String getOption() {
-        return primeOption;
+    private static List<String> initAllNumbers() {
+        List<String> numbers = new ArrayList<>();
+        for (int i = 0; i < BOUND; i++) {
+            numbers.add(Integer.toString(i));
+        }
+        return numbers;
     }
 
-    @Override
-    public final void initState() {
-        int primeOptionIndex = RANDOM.nextInt(allNumbers.size());
-        primeOption = allNumbers.get(primeOptionIndex).toString();
-    }
-
-    @Override
-    public final String getCorrectAnswer() {
-        return primeNumbers.contains(primeOption) ? YES : NO;
-    }
-
-
-    private List<String> initPrimeNumbers() {
-        List<Integer> numbers = new ArrayList<>(allNumbers);
+    private static List<String> initPrimeNumbers(
+            final List<String> allNumbers
+    ) {
+        List<String> numbers = new ArrayList<>(allNumbers);
         int i = 2;
         while (i < numbers.size()) {
-            if (!numbers.get(i).equals(0)) {
+            if (numbers.get(i) != null) {
                 int j = i + i;
                 while (j < numbers.size()) {
-                    numbers.set(j, 0);
+                    numbers.set(j, null);
                     j += i;
                 }
             }
@@ -51,15 +55,20 @@ public class PrimeGame extends BasicGame {
         }
         numbers.remove(0);
         numbers.remove(0);
-        return numbers.stream()
-                .filter(n -> !n.equals(0))
-                .map(Object::toString)
-                .collect(Collectors.toList());
+        return withoutNull(numbers);
     }
 
-    public static final String YES = "yes";
-    public static final String NO = "no";
+    private static List<String> withoutNull(final List<String> array) {
+        List<String> nonNulls = new ArrayList<>();
+        for (String element : array) {
+            if (element != null) {
+                nonNulls.add(element);
+            }
+        }
+        return nonNulls;
+    }
+
     private static final Integer BOUND = 200;
-    private static final String MESSAGE =
+    private static final String START_MESSAGE =
             "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 }

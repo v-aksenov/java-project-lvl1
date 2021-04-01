@@ -3,29 +3,48 @@ package hexlet.code.games;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProgressionGame extends BasicGame {
+import static hexlet.code.games.engine.Commons.GAME_COUNT;
+import static hexlet.code.games.engine.Commons.MAX_NUMBER;
+import static hexlet.code.games.engine.Commons.RANDOM;
+import static hexlet.code.games.engine.Commons.gameLoop;
+import static hexlet.code.games.engine.Commons.getRandomNonZero;
+import static hexlet.code.games.engine.Commons.printCongratulations;
 
-    private final List<String> progression = new ArrayList<>();
-    private String hiddenElement;
+public class ProgressionGame {
 
-    @Override
-    protected final String getMessage() {
-        return MESSAGE;
+    public static void startGame(final String name) {
+        System.out.println(START_MESSAGE);
+        boolean success = true;
+        int i = 0;
+        List<String> progression;
+        int hiddenElementIndex;
+        String hiddenElement;
+        while (i++ < GAME_COUNT && success) {
+            progression = initProgression();
+            hiddenElementIndex = chooseElementToHide(progression);
+            hiddenElement = progression.get(hiddenElementIndex);
+            success = gameLoop(
+                    name,
+                    getQuestion(progression, hiddenElementIndex),
+                    hiddenElement
+            );
+        }
+        if (success) {
+            printCongratulations(name);
+        }
     }
 
-    @Override
-    protected final String getOption() {
+    protected static String getQuestion(
+            final List<String> progression,
+            final int elementToHide
+    ) {
+        progression.remove(elementToHide);
+        progression.add(elementToHide, HIDDEN);
         return String.join(" ", progression);
     }
 
-    @Override
-    public final void initState() {
-        initProgression();
-        hideElement();
-    }
-
-    private void initProgression() {
-        progression.clear();
+    private static List<String> initProgression() {
+        List<String> progression = new ArrayList<>();
         int amount = RANDOM.nextInt(MAX_NUMBER) + MIN_PROGRESSION_SIZE;
         int currentElement = getRandomNonZero();
         int step = getRandomNonZero();
@@ -33,22 +52,15 @@ public class ProgressionGame extends BasicGame {
             progression.add(Integer.toString(currentElement));
             currentElement += step;
         }
+        return progression;
     }
 
-    private void hideElement() {
-        int elementToHide = RANDOM.nextInt(progression.size());
-        hiddenElement = progression.get(elementToHide);
-        progression.remove(elementToHide);
-        progression.add(elementToHide, HIDDEN);
-    }
-
-    @Override
-    public final String getCorrectAnswer() {
-        return hiddenElement;
+    private static int chooseElementToHide(final List<String> progression) {
+        return RANDOM.nextInt(progression.size());
     }
 
     private static final int MIN_PROGRESSION_SIZE = 5;
     private static final String HIDDEN = "..";
-    private static final String MESSAGE =
+    private static final String START_MESSAGE =
             "What number is missing in the progression?";
 }
