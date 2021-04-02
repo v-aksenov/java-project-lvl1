@@ -18,8 +18,9 @@ public class GameEngine {
         printRules(rules);
         boolean success = true;
         int i = 0;
-        while (i++ < GAME_ROUNDS && success) {
+        while (i < GAME_ROUNDS && success) {
             success = runRound(name, options.get(i), answers.get(i));
+            i++;
         }
         if (success) {
             printCongratulations(name);
