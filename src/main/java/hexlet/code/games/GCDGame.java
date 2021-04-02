@@ -1,9 +1,9 @@
 package hexlet.code.games;
 
-import static hexlet.code.games.engine.Commons.GAME_COUNT;
-import static hexlet.code.games.engine.Commons.gameLoop;
-import static hexlet.code.games.engine.Commons.getRandomNonZero;
-import static hexlet.code.games.engine.Commons.printCongratulations;
+import static hexlet.code.commons.EngineUtils.gameLoop;
+import static hexlet.code.commons.EngineUtils.getRandomNonZero;
+import static hexlet.code.commons.EngineUtils.printCongratulations;
+import static hexlet.code.commons.Constants.GAME_COUNT;
 
 public class GCDGame {
 

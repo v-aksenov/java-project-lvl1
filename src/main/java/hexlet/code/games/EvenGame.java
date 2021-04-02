@@ -1,11 +1,11 @@
 package hexlet.code.games;
 
-import static hexlet.code.games.engine.Commons.GAME_COUNT;
-import static hexlet.code.games.engine.Commons.NO;
-import static hexlet.code.games.engine.Commons.YES;
-import static hexlet.code.games.engine.Commons.gameLoop;
-import static hexlet.code.games.engine.Commons.getRandomNonZero;
-import static hexlet.code.games.engine.Commons.printCongratulations;
+import static hexlet.code.commons.EngineUtils.gameLoop;
+import static hexlet.code.commons.EngineUtils.getRandomNonZero;
+import static hexlet.code.commons.EngineUtils.printCongratulations;
+import static hexlet.code.commons.Constants.GAME_COUNT;
+import static hexlet.code.commons.Constants.NO;
+import static hexlet.code.commons.Constants.YES;
 
 public class EvenGame {
 
@@ -17,7 +17,7 @@ public class EvenGame {
         String correctAnswer;
         while (i++ < GAME_COUNT && success) {
             option = getRandomNonZero();
-            correctAnswer = getCorrectAnswer(option);
+            correctAnswer = isEven(option) ? YES : NO;
             success = gameLoop(name, Integer.toString(option), correctAnswer);
         }
         if (success) {
@@ -25,8 +25,8 @@ public class EvenGame {
         }
     }
 
-    public static String getCorrectAnswer(final int option) {
-        return option % 2 == 0 ? YES : NO;
+    private static boolean isEven(int numberToCheck) {
+        return numberToCheck % 2 == 0;
     }
 
     private static final String START_MESSAGE =

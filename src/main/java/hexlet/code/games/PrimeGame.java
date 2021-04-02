@@ -3,12 +3,12 @@ package hexlet.code.games;
 import java.util.ArrayList;
 import java.util.List;
 
-import static hexlet.code.games.engine.Commons.GAME_COUNT;
-import static hexlet.code.games.engine.Commons.NO;
-import static hexlet.code.games.engine.Commons.RANDOM;
-import static hexlet.code.games.engine.Commons.YES;
-import static hexlet.code.games.engine.Commons.gameLoop;
-import static hexlet.code.games.engine.Commons.printCongratulations;
+import static hexlet.code.commons.EngineUtils.RANDOM;
+import static hexlet.code.commons.EngineUtils.gameLoop;
+import static hexlet.code.commons.EngineUtils.printCongratulations;
+import static hexlet.code.commons.Constants.GAME_COUNT;
+import static hexlet.code.commons.Constants.NO;
+import static hexlet.code.commons.Constants.YES;
 
 public class PrimeGame {
 
