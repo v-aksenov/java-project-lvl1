@@ -1,47 +1,30 @@
 package hexlet.code.games;
 
-import static hexlet.code.commons.EngineUtils.gameLoop;
-import static hexlet.code.commons.EngineUtils.getRandomNonZero;
-import static hexlet.code.commons.EngineUtils.printCongratulations;
-import static hexlet.code.commons.Constants.GAME_COUNT;
+import hexlet.code.commons.GameEngine;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static hexlet.code.commons.Constants.GAME_ROUNDS;
+import static hexlet.code.commons.Utils.getRandomNonZero;
 
 public class GCDGame {
 
-    public static void startGame(final String name) {
-        System.out.println(START_MESSAGE);
-        boolean success = true;
-        int i = 0;
-        int option1;
-        int option2;
-        int multiplier;
-        String correctAnswer;
-        while (i++ < GAME_COUNT && success) {
-            multiplier = getRandomNonZero();
-            option1 = multiplier * getRandomNonZero();
-            option2 = multiplier * getRandomNonZero();
-            correctAnswer = getMultiplier(option1, option2);
-            success = gameLoop(
-                    name,
-                    getQuestion(option1, option2),
-                    correctAnswer
-            );
+    public static void startGame(String name) {
+        List<String> options = new ArrayList<>();
+        List<String> answers = new ArrayList<>();
+        for (int i = 0; i < GAME_ROUNDS; i++) {
+            int multiplier = getRandomNonZero();
+            int option1 = multiplier * getRandomNonZero();
+            int option2 = multiplier * getRandomNonZero();
+            int correctAnswer = getGcd(option1, option2);
+            options.add(OPTION_MESSAGE.formatted(option1, option2));
+            answers.add(Integer.toString(correctAnswer));
         }
-        if (success) {
-            printCongratulations(name);
-        }
+        GameEngine.playWithUser(START_MESSAGE, name, options, answers);
     }
 
-    protected static String getQuestion(
-            final int option1,
-            final int option2
-    ) {
-        return "%s %s".formatted(option1, option2);
-    }
-
-    private static String getMultiplier(
-            final int option1,
-            final int option2
-    ) {
+    private static int getGcd(int option1, int option2) {
         int gdcCandidate = option1;
         int b = option2;
         while (gdcCandidate != b) {
@@ -51,9 +34,9 @@ public class GCDGame {
                 b -= gdcCandidate;
             }
         }
-        return Integer.toString(gdcCandidate);
+        return gdcCandidate;
     }
 
-    private static final String START_MESSAGE =
-            "Find the greatest common divisor of given numbers.";
+    private static final String OPTION_MESSAGE = "%s %s";
+    private static final String START_MESSAGE = "Find the greatest common divisor of given numbers.";
 }

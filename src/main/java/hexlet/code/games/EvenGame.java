@@ -1,34 +1,31 @@
 package hexlet.code.games;
 
-import static hexlet.code.commons.EngineUtils.gameLoop;
-import static hexlet.code.commons.EngineUtils.getRandomNonZero;
-import static hexlet.code.commons.EngineUtils.printCongratulations;
-import static hexlet.code.commons.Constants.GAME_COUNT;
+import hexlet.code.commons.GameEngine;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static hexlet.code.commons.Constants.GAME_ROUNDS;
 import static hexlet.code.commons.Constants.NO;
 import static hexlet.code.commons.Constants.YES;
+import static hexlet.code.commons.Utils.getRandomNonZero;
 
 public class EvenGame {
 
-    public static void startGame(final String name) {
-        System.out.println(START_MESSAGE);
-        boolean success = true;
-        int i = 0;
-        int option;
-        String correctAnswer;
-        while (i++ < GAME_COUNT && success) {
-            option = getRandomNonZero();
-            correctAnswer = isEven(option) ? YES : NO;
-            success = gameLoop(name, Integer.toString(option), correctAnswer);
+    public static void startGame(String name) {
+        List<String> options = new ArrayList<>();
+        List<String> answers = new ArrayList<>();
+        for (int i = 0; i < GAME_ROUNDS; i++) {
+            int option = getRandomNonZero();
+            options.add(Integer.toString(option));
+            answers.add(isEven(option) ? YES : NO);
         }
-        if (success) {
-            printCongratulations(name);
-        }
+        GameEngine.playWithUser(START_MESSAGE, name, options, answers);
     }
 
     private static boolean isEven(int numberToCheck) {
         return numberToCheck % 2 == 0;
     }
 
-    private static final String START_MESSAGE =
-            "Answer 'yes' if number even otherwise answer 'no'.";
+    private static final String START_MESSAGE = "Answer 'yes' if number even otherwise answer 'no'.";
 }

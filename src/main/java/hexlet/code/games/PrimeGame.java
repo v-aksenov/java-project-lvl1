@@ -1,74 +1,41 @@
 package hexlet.code.games;
 
+import hexlet.code.commons.GameEngine;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static hexlet.code.commons.EngineUtils.RANDOM;
-import static hexlet.code.commons.EngineUtils.gameLoop;
-import static hexlet.code.commons.EngineUtils.printCongratulations;
-import static hexlet.code.commons.Constants.GAME_COUNT;
+import static hexlet.code.commons.Constants.GAME_ROUNDS;
 import static hexlet.code.commons.Constants.NO;
 import static hexlet.code.commons.Constants.YES;
+import static hexlet.code.commons.Utils.getRandomNonZero;
 
 public class PrimeGame {
 
-    public static void startGame(final String name) {
-        System.out.println(START_MESSAGE);
-        boolean success = true;
-        int i = 0;
-        List<String> allNumbers = initAllNumbers();
-        List<String> primeNumbers = initPrimeNumbers(allNumbers);
-        String optionElement;
-        String correctAnswer;
-        while (i++ < GAME_COUNT && success) {
-            optionElement = allNumbers.get(RANDOM.nextInt(allNumbers.size()));
-            correctAnswer = primeNumbers.contains(optionElement) ? YES : NO;
-            success = gameLoop(name, optionElement, correctAnswer);
+    public static void startGame(String name) {
+        List<String> options = new ArrayList<>();
+        List<String> answers = new ArrayList<>();
+        for (int i = 0; i < GAME_ROUNDS; i++) {
+            int option = getRandomNonZero();
+            options.add(Integer.toString(option));
+            answers.add(isPrime(option) ? YES : NO);
         }
-        if (success) {
-            printCongratulations(name);
-        }
+        GameEngine.playWithUser(START_MESSAGE, name, options, answers);
     }
 
-    private static List<String> initAllNumbers() {
-        List<String> numbers = new ArrayList<>();
-        for (int i = 0; i < BOUND; i++) {
-            numbers.add(Integer.toString(i));
+    private static boolean isPrime(int numberToCheck) {
+        if (numberToCheck < 2) {
+            return false;
         }
-        return numbers;
-    }
 
-    private static List<String> initPrimeNumbers(
-            final List<String> allNumbers
-    ) {
-        List<String> numbers = new ArrayList<>(allNumbers);
-        int i = 2;
-        while (i < numbers.size()) {
-            if (numbers.get(i) != null) {
-                int j = i + i;
-                while (j < numbers.size()) {
-                    numbers.set(j, null);
-                    j += i;
-                }
-            }
-            i++;
-        }
-        numbers.remove(0);
-        numbers.remove(0);
-        return withoutNull(numbers);
-    }
-
-    private static List<String> withoutNull(final List<String> array) {
-        List<String> nonNulls = new ArrayList<>();
-        for (String element : array) {
-            if (element != null) {
-                nonNulls.add(element);
+        for (int i = 2; i < Math.sqrt(numberToCheck); i++) {
+            if (numberToCheck % i == 0) {
+                return false;
             }
         }
-        return nonNulls;
+
+        return true;
     }
 
-    private static final Integer BOUND = 200;
-    private static final String START_MESSAGE =
-            "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+    private static final String START_MESSAGE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 }

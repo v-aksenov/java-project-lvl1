@@ -3,7 +3,7 @@ package hexlet.code.commons;
 public class Constants {
 
     public static final int MAX_NUMBER = 10;
-    public static final int GAME_COUNT = 3;
+    public static final int GAME_ROUNDS = 3;
 
     public static final String YES = "yes";
     public static final String NO = "no";

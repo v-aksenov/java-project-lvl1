@@ -1,52 +1,34 @@
 package hexlet.code.games;
 
-import java.util.List;
+import hexlet.code.commons.GameEngine;
 
-import static hexlet.code.commons.EngineUtils.RANDOM;
-import static hexlet.code.commons.EngineUtils.gameLoop;
-import static hexlet.code.commons.EngineUtils.printCongratulations;
-import static hexlet.code.commons.Constants.GAME_COUNT;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import static hexlet.code.commons.Constants.GAME_ROUNDS;
 import static hexlet.code.commons.Constants.MAX_NUMBER;
 
 public class CalculatorGame {
 
-    public static void startGame(final String name) {
-        System.out.println(START_MESSAGE);
-        boolean success = true;
-        int i = 0;
-        String option;
-        int a;
-        int b;
-        int actionIndex;
-        String correctAnswer;
-        while (i++ < GAME_COUNT && success) {
-            a = RANDOM.nextInt(MAX_NUMBER);
-            b = RANDOM.nextInt(MAX_NUMBER);
-            actionIndex = RANDOM.nextInt(ACTIONS.size());
-            option = getOption(a, b, actionIndex);
-            correctAnswer = Integer
-                    .toString(getExpressionResult(a, b, actionIndex));
-            success = gameLoop(name, option, correctAnswer);
+    private static final Random RANDOM = new Random();
+
+    public static void startGame(String name) {
+        List<String> options = new ArrayList<>();
+        List<String> answers = new ArrayList<>();
+        for (int i = 0; i < GAME_ROUNDS; i++) {
+            int a = RANDOM.nextInt(MAX_NUMBER);
+            int b = RANDOM.nextInt(MAX_NUMBER);
+            int actionIndex = RANDOM.nextInt(ACTIONS.size());
+            String action = ACTIONS.get(actionIndex);
+            options.add(OPTION_MESSAGE.formatted(a, action, b));
+            answers.add(Integer.toString(getExpressionResult(a, b, action)));
         }
-        if (success) {
-            printCongratulations(name);
-        }
+        GameEngine.playWithUser(START_MESSAGE, name, options, answers);
     }
 
-    protected static String getOption(
-            final int a,
-            final int b,
-            final int actionIndex
-    ) {
-        return "%s %s %s".formatted(a, ACTIONS.get(actionIndex), b);
-    }
-
-    private static int getExpressionResult(
-            final int a,
-            final int b,
-            final int actionIndex
-    ) {
-        switch (ACTIONS.get(actionIndex)) {
+    private static int getExpressionResult(int a, int b, String action) {
+        switch (action) {
             case PLUS -> {
                 return a + b;
             }
@@ -65,6 +47,6 @@ public class CalculatorGame {
     public static final String MULTI = "*";
     private static final List<String> ACTIONS = List.of(PLUS, MINUS, MULTI);
 
-    private static final String START_MESSAGE =
-            "What is the result of the expression?";
+    private static final String OPTION_MESSAGE = "%s %s %s";
+    private static final String START_MESSAGE = "What is the result of the expression?";
 }
